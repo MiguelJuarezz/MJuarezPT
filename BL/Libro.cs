@@ -194,5 +194,68 @@ namespace BL
             }
             return result;
         }
+
+        public static ML.Result GetAll()
+        {
+            ML.Result result = new ML.Result();
+            try
+            {
+                using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandText = "LibroGetAll";
+                        cmd.Connection = context;
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        //aqui voy a almacenar la información
+                        DataTable tableLibro = new DataTable();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                        //adapter.SelectCommand = cmd;
+                        adapter.Fill(tableLibro);
+
+                        if (tableLibro.Rows.Count > 0)
+                        {
+                            //mi lista
+                            result.Objects = new List<object>();
+                            foreach (DataRow row in tableLibro.Rows)
+                            {
+                                ML.Libro libro = new ML.Libro();
+                                libro.IdUsuario = int.Parse(row[0].ToString());
+                                libro.Nombre = row[1].ToString();
+                                libro.ApellidoPaterno = row[2].ToString();
+                                libro.ApellidoMaterno = row[3].ToString();
+                                libro.FechaNacimiento = row[4].ToString();
+                                libro.Sexo = row[5].ToString();
+                                libro.Telefono = row[6].ToString();
+                                libro.Email = row[7].ToString();
+                                libro.UserName = row[8].ToString();
+                                libro.Password = row[9].ToString();
+                                libro.Celular = row[10].ToString();
+                                libro.Curp = row[11].ToString();
+                                libro.Rol = new ML.Rol();
+                                libro.Rol.IdRol = int.Parse(row[12].ToString());
+
+
+                                result.Objects.Add(libro);
+                            }
+                            result.Correct = true;
+                        }
+                        else
+                        {
+                            result.Correct = false;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
     }
 }
