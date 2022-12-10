@@ -10,6 +10,7 @@ namespace PL
     {
         static void Main(string[] args)
         {
+            PL.Libro.Delete(MLlibro);
         }
     }
 }

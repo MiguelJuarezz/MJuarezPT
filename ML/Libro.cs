@@ -10,12 +10,12 @@ namespace ML
     {
         public int IdLibro { get; set; }
         public string Nombre { get; set; }
-        public int IdAutor { get; set; }
+        //public int IdAutor { get; set; }
         public int NumeroPaginas { get; set; }
         public string FechaPublicacion { get; set; }
-        public int IdEditorial { get; set; }
+        //public int IdEditorial { get; set; }
         public string Edicion { get; set; }
-        public int IdGenero { get; set; }
+        //public int IdGenero { get; set; }
 
         //propiedades de navegacion
         public ML.Autor Autor { get; set; }
