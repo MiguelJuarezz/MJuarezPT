@@ -51,10 +51,10 @@ namespace PL
             }
         }
 
-        public static void Delete(ML.Libro libro)
+        public static void Delete()
         {
             //instancia de un objeto
-            //ML.Libro libro = new ML.Libro();
+            ML.Libro libro = new ML.Libro();
 
             Console.WriteLine("Inserte El Id Del Usuario");
             libro.IdLibro = int.Parse(Console.ReadLine());

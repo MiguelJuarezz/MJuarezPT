@@ -89,7 +89,7 @@ namespace BL
                         //Agregar parametros
                         SqlParameter[] collection = new SqlParameter[1];
 
-                        collection[0] = new SqlParameter("@IdUsuario", System.Data.SqlDbType.Int);
+                        collection[0] = new SqlParameter("@IdLibro", System.Data.SqlDbType.Int);
                         collection[0].Value = libro.IdLibro;
 
 
