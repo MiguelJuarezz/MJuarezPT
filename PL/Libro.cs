@@ -74,5 +74,53 @@ namespace PL
                 Console.ReadKey();
             }
         }
+
+        public static void Update()
+        {
+            //instancia de un objeto
+            ML.Libro libro = new ML.Libro();
+
+            Console.WriteLine("Inserte El id Del Libro a actualizar");
+            libro.Nombre = Console.ReadLine();
+
+            Console.WriteLine("Inserte El Nombre Del Libro");
+            libro.Nombre = Console.ReadLine();
+
+            libro.Autor = new ML.Autor();
+            Console.WriteLine("Inserte El Id del autor");
+            libro.Autor.IdAutor = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Inserte El Numero de paginas");
+            libro.NumeroPaginas = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Inserte La fecha de publicacion");
+            libro.FechaPublicacion = Console.ReadLine();
+
+            libro.Editorial = new ML.Editorial();
+            Console.WriteLine("Inserte El id de la editorial");
+            libro.Editorial.IdEditorial = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Inserte la edicion del libro");
+            libro.Edicion = Console.ReadLine();
+
+            libro.Genero = new ML.Genero();
+            Console.WriteLine("Inserte el id genero del libro");
+            libro.Genero.IdGenero = int.Parse(Console.ReadLine());
+
+            ML.Result result = new ML.Result();
+            //mandar la información al BL 
+            result = BL.Libro.Update(libro);
+
+            if (result.Correct == true)
+            {
+                Console.WriteLine("El Usuario se actualizo correctamente");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("El Usuario no se actualizo" + result.ErrorMessage);
+                Console.ReadKey();
+            }
+        }
     }
 }
