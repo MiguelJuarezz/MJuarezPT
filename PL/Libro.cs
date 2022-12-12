@@ -81,7 +81,7 @@ namespace PL
             ML.Libro libro = new ML.Libro();
 
             Console.WriteLine("Inserte El id Del Libro a actualizar");
-            libro.Nombre = Console.ReadLine();
+            libro.IdLibro = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Inserte El Nombre Del Libro");
             libro.Nombre = Console.ReadLine();
@@ -113,13 +113,79 @@ namespace PL
 
             if (result.Correct == true)
             {
-                Console.WriteLine("El Usuario se actualizo correctamente");
+                Console.WriteLine("El resgistro se actualizo correctamente");
                 Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("El Usuario no se actualizo" + result.ErrorMessage);
+                Console.WriteLine("El registro no se actualizo" + result.ErrorMessage);
                 Console.ReadKey();
+            }
+        }
+
+        public static void GetAll()
+        {
+            ML.Result result = BL.Libro.GetAll();
+
+            if (result.Correct)
+            {
+                foreach (ML.Libro libro in result.Objects)
+                {
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine("El id del libro es:" + libro.IdLibro);
+                    Console.WriteLine("El nombre del libro es:" + libro.Nombre);
+                    Console.WriteLine("El id del autor del libro es:" + libro.Autor.IdAutor);
+                    Console.WriteLine("El numero de paginas del libro es:" + libro.NumeroPaginas);
+                    Console.WriteLine("La fecha de publicacion del libro es:" + libro.FechaPublicacion);
+                    Console.WriteLine("El id de la editorial del libro es:" + libro.Editorial.IdEditorial);
+                    Console.WriteLine("El numero de edicion del libro es:" + libro.Edicion);
+                    Console.WriteLine("El Id del Genero del libro es:" + libro.Genero.IdGenero);
+                    Console.WriteLine("El autor del libro es:" + libro.Autor.Nombre);
+                    Console.WriteLine("la editorial del libro es:" + libro.Editorial.Nombre);
+                    Console.WriteLine("El genero del libro es:" + libro.Genero.Nombre);
+                    Console.WriteLine("-----------------------------------");
+
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Ocurrio un error " + result.ErrorMessage);
+            }
+        }
+
+        public static void GetById()
+        {
+            Console.WriteLine("Ingrese el id del libro que desea consultar");
+            int idLibro = int.Parse(Console.ReadLine());
+
+            ML.Result result = new ML.Result();
+            result = BL.Libro.GetById(idLibro);
+
+            if (result.Correct)
+            {
+                ML.Libro libro = new ML.Libro();
+
+                //unboxing
+                libro = (ML.Libro)result.Object;
+
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("El id del libro es:" + libro.IdLibro);
+                Console.WriteLine("El nombre del libro es:" + libro.Nombre);
+                Console.WriteLine("El id del autor del libro es:" + libro.Autor.IdAutor);
+                Console.WriteLine("El numero de paginas del libro es:" + libro.NumeroPaginas);
+                Console.WriteLine("La fecha de publicacion del libro es:" + libro.FechaPublicacion);
+                Console.WriteLine("El id de la editorial del libro es:" + libro.Editorial.IdEditorial);
+                Console.WriteLine("El numero de edicion del libro es:" + libro.Edicion);
+                Console.WriteLine("El Id del Genero del libro es:" + libro.Genero.IdGenero);
+                Console.WriteLine("El autor del libro es:" + libro.Autor.Nombre);
+                Console.WriteLine("la editorial del libro es:" + libro.Editorial.Nombre);
+                Console.WriteLine("El genero del libro es:" + libro.Genero.Nombre);
+                Console.WriteLine("-----------------------------------");
+            }
+            else
+            {
+                Console.WriteLine("Ocurrio un error " + result.ErrorMessage);
             }
         }
 

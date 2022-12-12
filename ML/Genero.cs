@@ -10,5 +10,7 @@ namespace ML
     {
         public int IdGenero{ get; set; }
         public string Nombre { get; set; }
+
+        public List<object> Generos { get; set; }
     }
 }

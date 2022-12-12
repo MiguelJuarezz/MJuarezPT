@@ -1,0 +1,77 @@
+﻿@model ML.Libro
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Libros</h2>
+    <p>Aqui puede ver, editar o agrgar a un libro</p>
+    <p>Para agregar un libro presione el boton verde</p>
+    <p>Para editar un libro presione el boton amarillo</p>
+    <p>Para eliminar un libro presione el boton rojo</p>
+
+    <div class="row">
+        <div style="float:right">
+            @Html.ActionLink("+", "Form", "Libro", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Editar</th>
+                    <th @*class="hidden"*@>IdLibro</th>
+                    <th>Nombre libro</th>
+                    <th>id autor</th>
+                    <th>numero paginas</th>
+                    <th>fecha publicacion</th>
+                    <th>id editorial</th>
+                    <th>edicion</th>
+                    <th @*class="hidden"*@>id genero</th>
+                    <th>autor</th>
+                    <th>editorial</th>
+                    <th>Genero</th>
+                    <th>Eliminar</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (ML.Libro libro in Model.Libros)
+                {
+                    <tr>
+                        <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Libro", new { IdLibro = libro.IdLibro})"></a></td>
+                        <td @*class="hidden"*@>@libro.IdLibro</td>
+                        <td>@libro.Nombre @*@libro.ApellidoPaterno @libro.ApellidoMaterno*@</td>
+                        <td>@libro.Autor.IdAutor</td>
+                        <td>@libro.NumeroPaginas</td>
+                        <td>@libro.FechaPublicacion</td>
+                        <td>@libro.Editorial.IdEditorial</td>
+                        <td>@libro.Edicion</td>
+                        <td @*class="hidden"*@>@libro.Genero.IdGenero</td>
+                        <td>@libro.Autor.Nombre</td>
+                        <td>@libro.Editorial.Nombre</td>
+                        <td>@libro.Genero.Nombre</td>
+                        @*@if (usuario.Imagen != null)
+                            {
+                                <td><img src="data:image/*;base64,@Convert.ToBase64String(usuario.Imagen)" style=" height:150px; width:100px;"/></td>
+
+                            }
+                            else
+                            {
+                                <td><img src="~/Imagenes/SinUsuario.png" style=" height:150px; width:100px;"/></td>
+                            }*@
+                        <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Libro", new { IdLibro = libro.IdLibro })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

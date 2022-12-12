@@ -10,7 +10,8 @@ namespace PL
     {
         static void Main(string[] args)
         {
-            PL.Libro.Delete();
+            PL.Libro.GetById();
+            Console.ReadKey();
         }
     }
 }

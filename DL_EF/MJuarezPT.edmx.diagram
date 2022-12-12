@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4cad9e6194b240b8bcb97d72fbc6951c" Name="Diagram1">
+        <EntityTypeShape EntityType="MJuarezPTModel.Autor" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MJuarezPTModel.Editorial" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MJuarezPTModel.Genero" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MJuarezPTModel.Libro" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="MJuarezPTModel.FK__Libro__IdAutor__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="MJuarezPTModel.FK__Libro__IdEditori__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="MJuarezPTModel.FK__Libro__IdGenero__182C9B23" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

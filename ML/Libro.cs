@@ -16,10 +16,13 @@ namespace ML
         //public int IdEditorial { get; set; }
         public string Edicion { get; set; }
         //public int IdGenero { get; set; }
+        public List<object> Libros { get; set; }
 
         //propiedades de navegacion
         public ML.Autor Autor { get; set; }
         public ML.Editorial Editorial { get; set; }
         public ML.Genero Genero { get; set; }
+
+
     }
 }
