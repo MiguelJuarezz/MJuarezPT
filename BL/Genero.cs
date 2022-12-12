@@ -23,7 +23,7 @@ namespace BL
                     var generos = context.GeneroGetAll().ToList();
 
                     result.Objects = new List<object>();
-
+                     
                     if (generos != null)
                     {
                         foreach (var obj in generos)
